@@ -16,7 +16,7 @@ Ce projet est une API REST développée avec Java et Spring Boot.
 
 1. Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
 
-https://github.com/thetaf313/cours-spring.git
+git clone https://github.com/votre-utilisateur/votre-projet.git
 
 
 2. Assurez-vous d'avoir Java et Maven installés sur votre machine.
