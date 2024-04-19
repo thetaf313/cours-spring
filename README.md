@@ -51,7 +51,7 @@ Les contributions sont les bienvenues! Si vous souhaitez contribuer à ce projet
 
 ## Licence
 
-...
+Creative Commons Zero (CC0)
 
 ## Contact
 
