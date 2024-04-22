@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class ClasseDTO {
+
+    private String id;
     private String libelle;
     private String code;
     private int fraisInscription;
     private int mensualite;
     private Filiere filiere;
-
-
 
 }

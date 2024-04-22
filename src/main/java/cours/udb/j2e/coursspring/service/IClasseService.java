@@ -10,5 +10,6 @@ public interface IClasseService {
     Classe saveClasse(Classe classe);
     List<Classe> findAllClasses();
     Classe findClasseByLibelle(String libelle);
-
+    Classe findClasseById(long id);
+    void removeClasse(Classe c);
 }

@@ -38,4 +38,16 @@ public class GlobalExceptionHandler {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(response);
     }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    @ExceptionHandler(value = { ScolariteNotFound.class })
+    public ErrorDTO handleException(ScolariteNotFound exception) {
+
+        log.error(exception.getMessage(), exception);
+        return ErrorDTO.builder()
+                .code(HttpStatus.NOT_FOUND.value() + "")
+                .message(exception.getMessage())
+                .build();
+    }
 }
