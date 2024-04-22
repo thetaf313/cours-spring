@@ -16,6 +16,7 @@ Ce projet est une API REST développée avec Java et Spring Boot.
 
 1. Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
 
+
 git clone https://github.com/thetaf313/cours-spring.git
 
 
@@ -51,7 +52,7 @@ Les contributions sont les bienvenues! Si vous souhaitez contribuer à ce projet
 
 ## Licence
 
-...
+Creative Commons Zero (CC0)
 
 ## Contact
 
