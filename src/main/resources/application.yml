@@ -12,6 +12,7 @@ spring:
       resource-server:
         jwt:
           issuer-uri: http://localhost:8080/realms/cours-spring-realm
+#          jwk-set-uri: http://localhost:8080/realms/cours-spring-realm/protocol/openid-connect/certs
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -34,6 +35,7 @@ app:
       username: xxxxx
     client-id: cours-spring
     client-secret: 7rKmf4DZi7LdCjMi3nJPphzsYGcsa6sZ
+#    client-secret: glBbk0HZ02K7Eui2qradwk7aOwlYZiIv
     grant-type: password
     login:
       url: http://localhost:8080/realms/cours-spring-realm/protocol/openid-connect/token
