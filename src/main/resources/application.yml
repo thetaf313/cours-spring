@@ -14,6 +14,7 @@ spring:
           issuer-uri: http://localhost:8080/realms/cours-spring-realm
 #          jwk-set-uri: http://localhost:8080/realms/cours-spring-realm/protocol/openid-connect/certs
 
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cours_springboot
@@ -47,3 +48,8 @@ keycloak:
   ssl-required: external
   use-resource-role-mappings: true
 
+jwt:
+  auth:
+    converter:
+      resource-id: cours-spring
+      principal-attribute: sub

@@ -1,8 +1,9 @@
-package cours.udb.j2e.coursspring.service;
+package cours.udb.j2e.coursspring.controller;
 
 
 import cours.udb.j2e.coursspring.model.LoginRequest;
 import cours.udb.j2e.coursspring.model.LoginResponse;
+import cours.udb.j2e.coursspring.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;

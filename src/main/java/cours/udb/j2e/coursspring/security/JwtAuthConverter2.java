@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
-public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
+public class JwtAuthConverter2 implements Converter<Jwt, AbstractAuthenticationToken> {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtAuthConverter.class);
 
@@ -27,7 +27,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
 
     private final JwtAuthConverterProperties properties;
 
-    public JwtAuthConverter(JwtAuthConverterProperties properties) {
+    public JwtAuthConverter2(JwtAuthConverterProperties properties) {
         this.properties = properties;
     }
 
@@ -60,7 +60,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
             return Set.of();
         }
         return resourceRoles.stream()
-                .map(SimpleGrantedAuthority::new)
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                 .collect(Collectors.toSet());
     }
 }
