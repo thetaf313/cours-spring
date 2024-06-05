@@ -52,4 +52,4 @@ jwt:
   auth:
     converter:
       resource-id: cours-spring
-      principal-attribute: sub
+      principal-attribute: preferred_username

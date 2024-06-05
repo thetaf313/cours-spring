@@ -22,8 +22,8 @@ public class WebSecurityConfig {
     public static final String SUPER = "super";
 
 
-//    private final JwtAuthConverter jwtAuthConverter;
-    private final JwtAuthConverter2 jwtAuthConverter2;
+    private final JwtAuthConverter jwtAuthConverter;
+//    private final JwtAuthConverter2 jwtAuthConverter2;
 
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -58,14 +58,14 @@ public class WebSecurityConfig {
                 .permitAll()
 
                 .requestMatchers(new AntPathRequestMatcher("/classe/**"))
-                .hasAnyRole(ADMIN, USER)
+                .hasAnyAuthority(ADMIN, USER)
 
 
                 .requestMatchers(new AntPathRequestMatcher("/newclasse/**"))
-                .hasRole(ADMIN)
+                .hasAuthority(ADMIN)
 
                 .requestMatchers(new AntPathRequestMatcher("/super/**"))
-                .hasRole(SUPER)
+                .hasAuthority(SUPER)
 
                 .anyRequest()
                 .authenticated());
@@ -73,7 +73,7 @@ public class WebSecurityConfig {
         http.sessionManagement(smc -> smc.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.oauth2ResourceServer((oauth2) -> oauth2
-                .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter2)
+                .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter)
                         .jwkSetUri("http://localhost:8080/realms/cours-spring-realm/protocol/openid-connect/certs")));
 
 //        http.oauth2Login(Customizer.withDefaults());
