@@ -67,6 +67,10 @@ public class WebSecurityConfig {
                 .requestMatchers(new AntPathRequestMatcher("/super/**"))
                 .hasAuthority(SUPER)
 
+
+                .requestMatchers(new AntPathRequestMatcher("/keycloak/**"))
+                .hasAuthority(SUPER)
+
                 .anyRequest()
                 .authenticated());
 
