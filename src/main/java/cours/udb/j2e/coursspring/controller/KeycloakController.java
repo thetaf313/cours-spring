@@ -1,12 +1,11 @@
 package cours.udb.j2e.coursspring.controller;
 
+import cours.udb.j2e.coursspring.dto.UserDTO;
 import cours.udb.j2e.coursspring.service.KeycloakService;
 import org.keycloak.representations.idm.UserRepresentation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -31,5 +30,16 @@ public class KeycloakController {
         return keycloakService.getUser(username);
     }
 
+    @PostMapping
+    public UserRepresentation createUser(@RequestBody UserDTO userDTO) {
+
+        keycloakService.createUser(userDTO);
+        return keycloakService.getUser(userDTO.getUserName());
+    }
+
+    @PutMapping("change-password")
+    public void updatePassword(Principal principal) {
+        keycloakService.updatePassword(principal.getName());
+    }
 
 }

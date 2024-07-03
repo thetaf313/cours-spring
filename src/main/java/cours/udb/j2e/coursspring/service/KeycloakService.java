@@ -1,6 +1,7 @@
 package cours.udb.j2e.coursspring.service;
 
 import cours.udb.j2e.coursspring.dto.UserDTO;
+import cours.udb.j2e.coursspring.exception.ScolariteException;
 import cours.udb.j2e.coursspring.keycloak.Credentials;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.RealmResource;
@@ -66,7 +67,7 @@ public class KeycloakService {
         usersResource.create(user);
         user = usersResource.search(user.getUsername()).get(0);
 
-        keycloak.realm(realm).users().get(user.getId());
+//        keycloak.realm(realm).users().get(user.getId());
 
         UserResource userResource =
                 keycloak.realm(realm).users().get(user.getId());
@@ -74,7 +75,7 @@ public class KeycloakService {
         // Get client
         ClientRepresentation app1Client = keycloak.realm(realm).clients() //
                 .findByClientId(clientId).get(0);
-        for (String role: userDTO.getRoles()) {
+        for (String role : userDTO.getRoles()) {
             // Get client level role (requires view-clients role)
             RoleRepresentation userClientRole = keycloak.realm(realm).clients()
                     .get(app1Client.getId())
@@ -82,7 +83,22 @@ public class KeycloakService {
 
             // Assign client level role to user
             userResource.roles() //
-                    .clientLevel(app1Client.getId()).add(Arrays.asList(userClientRole));//
+                    .clientLevel(app1Client.getId()).add(Arrays.asList(userClientRole));
         }
+    }
+
+    public void updatePassword(String userID) {
+
+        UsersResource usersResource = keycloak.realm(realm).users();
+        UserRepresentation userRepresentation = usersResource.search(userID, true)
+                .stream().findFirst().orElse(null);
+
+        if(userRepresentation != null) {
+            UserResource userResource = usersResource.get(userRepresentation.getId());
+            userResource.executeActionsEmail(Arrays.asList("UPDATE_PASSWORD"));
+
+            return;
+        }
+        throw new ScolariteException("User not found !");
     }
 }
